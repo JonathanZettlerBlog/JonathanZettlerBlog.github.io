@@ -22,8 +22,8 @@
       <pubDate>Thu, 24 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>http://jonathanzettlerblog.github.io/2022/03/24/did-nebraska-basketball-get-better-throuhout-the-2022-season/</guid>
-      <description>  This is the story of whether Nebraska Basketball improved, regressed, or stayed the same throughout the 2022 season.
-library(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ## ✓ ggplot2 3.3.5 ✓ purrr 0.3.4 ## ✓ tibble 3.1.6 ✓ dplyr 1.0.7 ## ✓ tidyr 1.1.3 ✓ stringr 1.4.0 ## ✓ readr 2.0.1 ✓ forcats 0.5.1 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## x dplyr::filter() masks stats::filter() ## x dplyr::lag() masks stats::lag() library(ggplot2) </description>
+      <description>This is the story of whether Nebraska Basketball improved, regressed, or stayed the same throughout the 2022 season.
+library(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ## ✓ ggplot2 3.3.5 ✓ purrr 0.3.4 ## ✓ tibble 3.1.6 ✓ dplyr 1.0.7 ## ✓ tidyr 1.1.3 ✓ stringr 1.4.0 ## ✓ readr 2.0.1 ✓ forcats 0.5.1 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## x dplyr::filter() masks stats::filter() ## x dplyr::lag() masks stats::lag() library(ggplot2) Nebraska2022GameLogs &amp;lt;- read_csv(&amp;quot;data/Nebraska2022GameLogs.</description>
     </item>
     
   </channel>

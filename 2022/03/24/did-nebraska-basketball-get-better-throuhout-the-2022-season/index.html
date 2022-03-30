@@ -88,6 +88,32 @@ the same throughout the 2022 season.</p>
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(ggplot2)</code></pre>
+<pre class="r"><code>Nebraska2022GameLogs &lt;- read_csv(&quot;data/Nebraska2022GameLogs.csv&quot;)</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...3
+## * Opp -&gt; Opp...4
+## * Opp -&gt; Opp...7</code></pre>
+<pre><code>## Rows: 32 Columns: 39
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr   (3): ...3, Opp...4, W/L
+## dbl  (35): G, Tm, Opp...7, TeamFG, TeamFGA, TeamFGPCT, Team3P, Team3PA, Team...
+## date  (1): Date
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>NebraskaGameLogs &lt;- Nebraska2022GameLogs %&gt;%
+  mutate(TeamTSPCT = Tm/ (2*(TeamFGA + Team3PA))) %&gt;%
+  mutate(OppTSPCT = Opp...7/(2*(OppFGA + Opp3PA)))</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_line(data=NebraskaGameLogs, aes(x=Date, y=TeamTSPCT), color=&quot;red&quot;) +
+  geom_line(data=NebraskaGameLogs, aes(x=Date, y=OppTSPCT), color=&quot;grey&quot;) + 
+  scale_y_continuous(limits = c(0, .7))</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/24/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot() + 
+  geom_bar(data=NebraskaGameLogs, aes(x=Date, weight=TeamBLK, fill=TeamBLK)) +
+  coord_polar()</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/24/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 
     </div>
   </article>
