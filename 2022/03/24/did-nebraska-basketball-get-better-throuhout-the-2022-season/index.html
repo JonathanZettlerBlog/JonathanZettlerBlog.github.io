@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.89.4" />
+<meta name="generator" content="Hugo 0.96.0" />
 
 
 <title>Did Nebraska Basketball get better throughout the 2022 Season - Jonathan&#39;s Sports Blog</title>
@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">2 min read</span>
     
 
     <h1 class="article-title">Did Nebraska Basketball get better throughout the 2022 Season</h1>
@@ -87,7 +87,8 @@ the same throughout the 2022 season.</p>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(ggplot2)</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(gt)</code></pre>
 <pre class="r"><code>Nebraska2022GameLogs &lt;- read_csv(&quot;data/Nebraska2022GameLogs.csv&quot;)</code></pre>
 <pre><code>## New names:
 ## * `` -&gt; ...3
@@ -106,14 +107,33 @@ the same throughout the 2022 season.</p>
   mutate(TeamTSPCT = Tm/ (2*(TeamFGA + Team3PA))) %&gt;%
   mutate(OppTSPCT = Opp...7/(2*(OppFGA + Opp3PA)))</code></pre>
 <pre class="r"><code>ggplot() + 
-  geom_line(data=NebraskaGameLogs, aes(x=Date, y=TeamTSPCT), color=&quot;red&quot;) +
-  geom_line(data=NebraskaGameLogs, aes(x=Date, y=OppTSPCT), color=&quot;grey&quot;) + 
-  scale_y_continuous(limits = c(0, .7))</code></pre>
+  geom_line(data=NebraskaGameLogs, aes(x=Date, y=OppTSPCT), color=&quot;red&quot;) +
+  scale_y_continuous(limits = c(0, .7)) + 
+  labs(y = &quot;Date&quot;, 
+       title = &quot;2022 Nebraska Basketball Opponent True Shooting over 
+the Season&quot;,
+       subtitle = &quot;Nebraska&#39;s Opponents shooting got slightly better towards the 
+end of 2022&quot;) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12, face = &quot;bold&quot;),
+    plot.subtitle = element_text(size = 11),
+    axis.title = element_text(size = 8),
+    panel.grid.minor = element_blank()
+  )</code></pre>
 <p><img src="http://jonathanzettlerblog.github.io/2022/03/24/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>ggplot() + 
   geom_bar(data=NebraskaGameLogs, aes(x=Date, weight=TeamBLK, fill=TeamBLK)) +
   coord_polar()</code></pre>
 <p><img src="http://jonathanzettlerblog.github.io/2022/03/24/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot() + 
+  geom_point(
+    data=NebraskaGameLogs, 
+    aes(x=Date, y=TeamSTL)
+    ) +
+  scale_y_continuous(limits = c(0, 11))</code></pre>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/24/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
     </div>
   </article>
