@@ -5,8 +5,7 @@
     <link>http://jonathanzettlerblog.github.io/</link>
     <description>Recent content on Jonathan&#39;s Sports Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://jonathanzettlerblog.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="http://jonathanzettlerblog.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>http://jonathanzettlerblog.github.io/about/</link>
@@ -14,15 +13,6 @@
       
       <guid>http://jonathanzettlerblog.github.io/about/</guid>
       <description>My name is Jonathan Zettler. I am senior at the University of Nebraska- Lincoln who is majoring in Sports Media and Communications and I will be posting visualizations here that I produce from breaking down the data in sports like football, basketball, and volleyball.</description>
-    </item>
-    
-    <item>
-      <title>Did Nebraska Basketball&#39;s Defense get better throughout 2021-2022 Season</title>
-      <link>http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-s-defense-get-better-throughout-2021-2022-season/</link>
-      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-s-defense-get-better-throughout-2021-2022-season/</guid>
-      <description>  </description>
     </item>
     
   </channel>
