@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.96.0" />
+
+
+<title>Did Nebraska Basketball get better throughout the 2022 Season - Jonathan&#39;s Sports Blog</title>
+<meta property="og:title" content="Did Nebraska Basketball get better throughout the 2022 Season - Jonathan&#39;s Sports Blog">
+
+
+  <link href='http://jonathanzettlerblog.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Did Nebraska Basketball get better throughout the 2022 Season</h1>
+
+    
+    <span class="article-date">2022-03-31</span>
+    
+
+    <div class="article-content">
+      
+<script src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>This is the story of whether Nebraska Basketball improved, regressed, or stayed
+the same throughout the 2022 season.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(gt)</code></pre>
+<pre class="r"><code>Nebraska2022GameLogs &lt;- read_csv(&quot;data/Nebraska2022GameLogs.csv&quot;)</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...3
+## * Opp -&gt; Opp...4
+## * Opp -&gt; Opp...7</code></pre>
+<pre><code>## Rows: 32 Columns: 39
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr   (3): ...3, Opp...4, W/L
+## dbl  (35): G, Tm, Opp...7, TeamFG, TeamFGA, TeamFGPCT, Team3P, Team3PA, Team...
+## date  (1): Date
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>NebraskaGameLogs &lt;- Nebraska2022GameLogs %&gt;%
+  mutate(TeamTSPCT = Tm/ (2*(TeamFGA + Team3PA))) %&gt;%
+  mutate(OppTSPCT = Opp...7/(2*(OppFGA + Opp3PA)))</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_line(data=NebraskaGameLogs, aes(x=Date, y=OppTSPCT), color=&quot;red&quot;) +
+  scale_y_continuous(limits = c(0, .7)) + 
+  labs(y = &quot;Date&quot;, 
+       title = &quot;2022 Nebraska Basketball Opponent True Shooting over 
+the Season&quot;,
+       subtitle = &quot;Nebraska&#39;s Opponents shooting got slightly better towards the 
+end of 2022&quot;) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12, face = &quot;bold&quot;),
+    plot.subtitle = element_text(size = 11),
+    axis.title = element_text(size = 8),
+    panel.grid.minor = element_blank()
+  )</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot() + 
+  geom_bar(data=NebraskaGameLogs, aes(x=Date, weight=TeamBLK, fill=TeamBLK)) +
+  coord_polar()</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot() + 
+  geom_point(
+    data=NebraskaGameLogs, 
+    aes(x=Date, y=TeamSTL)
+    ) +
+  scale_y_continuous(limits = c(0, 11))</code></pre>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-get-better-throuhout-the-2022-season/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
