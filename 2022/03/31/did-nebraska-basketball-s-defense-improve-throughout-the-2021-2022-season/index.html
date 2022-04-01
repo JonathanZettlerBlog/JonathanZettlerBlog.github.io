@@ -102,20 +102,24 @@ library(ggalt)</code></pre>
 ##   grobWidth.absoluteGrob  ggplot2
 ##   grobX.absoluteGrob      ggplot2
 ##   grobY.absoluteGrob      ggplot2</code></pre>
-<pre class="r"><code>logs &lt;- read_csv(&quot;data/Nebraska2022GameLogs.csv&quot;)</code></pre>
+<pre class="r"><code>logs &lt;- read_csv(&quot;data/Nebraska2022GameLogs2.csv&quot;)</code></pre>
 <pre><code>## New names:
-## * `` -&gt; ...3
-## * Opp -&gt; Opp...4
-## * Opp -&gt; Opp...7</code></pre>
+## * `` -&gt; ...3</code></pre>
 <pre><code>## Rows: 32 Columns: 39
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
-## chr   (3): ...3, Opp...4, W/L
-## dbl  (35): G, Tm, Opp...7, TeamFG, TeamFGA, TeamFGPCT, Team3P, Team3PA, Team...
+## chr   (3): ...3, Opp, W/L
+## dbl  (35): G, Tm, OppScore, TeamFG, TeamFGA, TeamFGPCT, Team3P, Team3PA, Tea...
 ## date  (1): Date
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>logswithtrueshooting &lt;- logs %&gt;% mutate(
+  OpponentTrueshootingPercentage = (OppScore/(2*(OppFGA + (.44*OppFTA))))*100 
+)</code></pre>
+<pre class="r"><code>ggplot() + geom_line(data=logswithtrueshooting, aes(x=Date, y=OpponentTrueshootingPercentage)) +
+  scale_y_continuous(limits = c(0, 90))</code></pre>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-s-defense-improve-throughout-the-2021-2022-season/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 
     </div>
   </article>
