@@ -135,7 +135,7 @@ the course of the season.</p>
   geom_point(data=logswithtrueshooting, aes(x=Date, y=TeamSTL)) +
   geom_smooth(data=logswithtrueshooting, aes(x=Date, y=TeamSTL), color= &quot;red&quot;) +
    scale_y_continuous(limits = c(0, 15)) +
-  labs(title=&quot;Nebraska Basketball&#39;s Steals each Game over the Season&quot;, subtitle = &quot;There did not appear to be much of a pattern of the Cornhuskers improving or getting worse with steals&quot;,  x=&quot;Steals&quot;, y=&quot;Opponent True Shooting Percentage&quot;, caption =&quot;Source: Basketball Reference | By Jonathan Zettler&quot;) + 
+  labs(title=&quot;Nebraska&#39;s Steals each Game over the Season&quot;, subtitle = &quot;There did not appear to be much of a pattern of the Cornhuskers improving or getting worse with steals&quot;,  x=&quot;Steals&quot;, y=&quot;Opponent True Shooting Percentage&quot;, caption =&quot;Source: Basketball Reference | By Jonathan Zettler&quot;) + 
   theme_minimal() + 
   theme(
     plot.title = element_text(size = 14, face = &quot;bold&quot;),
@@ -148,7 +148,7 @@ the course of the season.</p>
 <pre class="r"><code>ggplot() + 
   geom_bar(data=logswithtrueshooting, aes(x=Date, weight=TeamBLK, fill= TeamBLK)) +
   coord_polar() +
-  labs(title=&quot;Nebraska&#39;s Blocks each game over the Season&quot;, subtitle = &quot;While huge improvement was not made with rim protection, Nebraska certinly ended season with more blocks than the games in the begining of the season&quot;,  x=&quot;Date&quot;, y=&quot;Blocks&quot;, caption =&quot;Source: Basketball Reference | By Jonathan Zettler&quot;) + 
+  labs(title=&quot;Nebraska&#39;s Blocks each game over the Season&quot;, subtitle = &quot;While huge improvement was not made with rim protection, Nebraska certainly ended season with more blocks than the games in the begining of the season&quot;,  x=&quot;Date&quot;, y=&quot;Blocks&quot;, caption =&quot;Source: Basketball Reference | By Jonathan Zettler&quot;) + 
   theme_minimal() + 
   theme(
     plot.title = element_text(size = 14, face = &quot;bold&quot;),
