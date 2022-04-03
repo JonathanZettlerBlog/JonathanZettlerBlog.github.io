@@ -131,6 +131,10 @@ the course of the season.</p>
     panel.grid.minor = element_blank()
     )</code></pre>
 <p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-s-defense-improve-throughout-the-2021-2022-season/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Forcing turnovers is a huge part of good defensive basketball, specifically
+getting steals. This scatterplot below gives you a good look at how many steals
+Nebraska’s defense got against each team over the course of the season to see
+whether or not they improved or got worse with steals over the season.</p>
 <pre class="r"><code>ggplot() + 
   geom_point(data=logswithtrueshooting, aes(x=Date, y=TeamSTL)) +
   geom_smooth(data=logswithtrueshooting, aes(x=Date, y=TeamSTL), color= &quot;red&quot;) +
@@ -144,7 +148,10 @@ the course of the season.</p>
     panel.grid.minor = element_blank()
     )</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-s-defense-improve-throughout-the-2021-2022-season/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="http://jonathanzettlerblog.github.io/2022/03/31/did-nebraska-basketball-s-defense-improve-throughout-the-2021-2022-season/index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+Rim protection is an important part in having a good defense. This unique
+Circular Bar Chart below shows you how many blocks Nebraska’s defense had each
+game throughout the course of the season.</p>
 <pre class="r"><code>ggplot() + 
   geom_bar(data=logswithtrueshooting, aes(x=Date, weight=TeamBLK, fill= TeamBLK)) +
   coord_polar() +
